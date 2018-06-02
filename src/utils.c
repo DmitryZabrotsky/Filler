@@ -30,11 +30,11 @@ void	put_arr(char **arr, int len)
 	i = 0;
 	while (i != len)
 	{
-		ft_putstr_fd(RED, 2);
-		ft_putendl_fd("TRYING TO OUT ARR", 2);
-		ft_putstr_fd(RESET, 2);
+		// ft_putstr_fd(RED, 2);
+		// ft_putendl_fd("TRYING TO OUT ARR", 2);
+		// ft_putstr_fd(RESET, 2);
 
-		ft_putstr_fd(MAGENTA, 2);
+		ft_putstr_fd(YELLOW, 2);
 		ft_putendl_fd(arr[i], 2);
 		ft_putstr_fd(RESET, 2);
 		i++;

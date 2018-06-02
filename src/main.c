@@ -47,9 +47,9 @@ char	**parse_board(int i)
 			ft_putendl_fd(s, 2);
 			ft_putstr_fd(RESET, 2);
 			
-			board[j] = ft_strdup(s);
+			board[j] = ft_strdup(s + 4);
 
-			ft_putstr_fd(YELLOW, 2);
+			ft_putstr_fd(BLACK, 2);
 			ft_putendl_fd(board[j], 2);
 			ft_putstr_fd(RESET, 2);
 
