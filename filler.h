@@ -4,7 +4,8 @@
 # include "./libft/incl/libft.h"
 # include <stdio.h>
 
-char *g_player;
+char	*g_player;
+int		g_overlap;
 
 typedef struct s_map
 {
