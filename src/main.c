@@ -140,6 +140,8 @@ int		main(void)
 	ft_putstr_fd(RESET, 2);
 	
 	put_arr(piece->map, piece->y);
+
+	will_put(map, piece);
 	
 	del_map(&map);
 	del_map(&piece);

@@ -18,4 +18,6 @@ t_map	*create_map(void);
 void	del_map(t_map **del);
 void	put_arr(char **arr, int len);
 
+void	will_put(t_map *map, t_map *piece);
+
 #endif
