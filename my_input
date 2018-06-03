@@ -3,10 +3,10 @@
 # 42 / filler VM Developped by: Hcao - Abanlin #
 #                                              #
 # -------------------------------------------- #
+launched ./players/champely.filler
+$$$ exec p1 : [./players/champely.filler]
 launched ./dzabrots.filler
-$$$ exec p1 : [./dzabrots.filler]
-launched ./players/abanlin.filler
-$$$ exec p2 : [./players/abanlin.filler]
+$$$ exec p2 : [./dzabrots.filler]
 Plateau 24 40:
     0123456789012345678901234567890123456789
 000 ........................................
@@ -33,11 +33,11 @@ Plateau 24 40:
 021 ........................................
 022 ........................................
 023 ........................................
-Piece 4 1:
-.
-*
-*
-*
-Player with O: error on input
+Piece 4 7:
+*.*....
+*****..
+..****.
+....*..
+Player with X: error on input
 == O fin: 0
 == X fin: 0

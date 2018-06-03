@@ -36,24 +36,15 @@ char	**parse_board(int i)
 	j = 0;
 	if ((board = (char **)malloc(sizeof(char *) * len)))
 	{
-		board[len] = NULL;
+		board[i] = NULL;
 		if (get_next_line(0, &s))
 			free(s);
 		while (j < i)
 		{
 			if (get_next_line(0, &s))
-			{
-			ft_putstr_fd(BLACK, 2);
-			ft_putendl_fd(s, 2);
-			ft_putstr_fd(RESET, 2);
-			
-			board[j] = ft_strdup(s + 4);
-
-			ft_putstr_fd(BLACK, 2);
-			ft_putendl_fd(board[j], 2);
-			ft_putstr_fd(RESET, 2);
-
-			free(s);
+			{	
+				board[j] = ft_strdup(s + 4);
+				free(s);
 			}
 			j++;
 		}
@@ -79,13 +70,58 @@ t_map	*parse_map(void)
 	return (map);
 }
 
+char	**parse_figure(int i)
+{
+	char **figure;
+	char *s;
+	int len;
+	int j;
+
+	len = i + 1;
+	j = 0;
+	if ((figure = (char **)malloc(sizeof(char *) * len)))
+	{
+		figure[i] = NULL;
+		while (j < i)
+		{
+			if (get_next_line(0, &s))
+			{	
+				figure[j] = ft_strdup(s);
+				free(s);
+			}
+			j++;
+		}
+	}
+	return (figure);
+}
+
+t_map	*parse_piece(void)
+{
+	char *s;
+	t_map *piece;
+
+	piece = create_map();
+	if (get_next_line(0, &s))
+	{
+		if (ft_strstr(s, "Piece"))
+		{
+			piece->x = parse_xy(s, 'x');
+			piece->y = parse_xy(s, 'y');
+		}
+	}
+	piece->map = parse_figure(piece->y);
+	return (piece);
+}
+
 int		main(void)
 {
 	char *s;
 	t_map *map;
+	t_map *piece;
 
 	parse_player();
 	map = parse_map();
+	piece = parse_piece();
 
 	ft_putstr_fd(GREEN, 2);
 	ft_putendl_fd(g_player, 2);
@@ -97,7 +133,17 @@ int		main(void)
 	ft_putstr_fd(RESET, 2);
 
 	put_arr(map->map, map->y);
-	//del_map(&map);
+
+	ft_putstr_fd(BLUE, 2);
+	ft_putendl_fd(ft_itoa(piece->x), 2);
+	ft_putendl_fd(ft_itoa(piece->y), 2);
+	ft_putstr_fd(RESET, 2);
+	
+	put_arr(piece->map, piece->y);
+	
+	del_map(&map);
+	del_map(&piece);
+
 	while (1)
 	{
 		while (get_next_line(0, &s))
