@@ -1,6 +1,6 @@
 #include "../filler.h"
 
-static int		check_coord(int x, int y, t_map *map, t_map *piece)
+static int		check_coord(int y, int x, t_map *map, t_map *piece)
 {
 	char p;
 	char e;
@@ -13,10 +13,18 @@ static int		check_coord(int x, int y, t_map *map, t_map *piece)
 	i = 0;
 	while (i < piece->y)
 	{
+		j = 0;
 		while (j < piece->x)
 		{
 			if ((piece->map)[i][j] == '*')
 			{
+				// ft_putstr_fd(YELLOW, 2);
+				// ft_putstr_fd("[", 2);
+				// ft_putchar_fd((piece->map)[i][j], 2);
+				// ft_putstr_fd("]:[", 2);
+				// ft_putchar_fd((map->map)[i + y][j + x], 2);
+				// ft_putstr_fd("]", 2);
+				// ft_putstr_fd(RESET, 2);
 				if ((map->map)[i + y][j + x] == p || (map->map)[i + y][j + x] == p + 32)
 					g_overlap++;
 				if ((map->map)[i + y][j + x] == e || (map->map)[i + y][j + x] == e + 32)
@@ -40,8 +48,8 @@ void		will_put(t_map *map, t_map *piece)
 	int i;
 	int j;
 
-	end_x = map->x - piece->x + 1;
-	end_y = map->y - piece->y + 1;
+	end_x = map->x - piece->x;
+	end_y = map->y - piece->y;
 	i = 0;
 	while (i <= end_y)
 	{
@@ -52,8 +60,19 @@ void		will_put(t_map *map, t_map *piece)
 			{
 				ft_putstr_fd(CYAN, 2);
 				ft_putstr_fd(ft_itoa(i), 2);
+				ft_putstr_fd(":", 2);
+				ft_putstr_fd(ft_itoa(j), 2);
 				ft_putstr_fd(" ", 2);
-				ft_putendl_fd(ft_itoa(j), 2);
+				ft_putstr_fd(RESET, 2);
+			}
+			else
+			{
+				ft_putstr_fd(BLACK, 2);
+				ft_putstr_fd(" ", 2);
+				ft_putstr_fd(ft_itoa(i), 2);
+				ft_putstr_fd(":", 2);
+				ft_putstr_fd(ft_itoa(j), 2);
+				ft_putstr_fd(" ", 2);
 				ft_putstr_fd(RESET, 2);
 			}
 			j++;

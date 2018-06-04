@@ -43,6 +43,9 @@ char	**parse_board(int i)
 		{
 			if (get_next_line(0, &s))
 			{	
+				ft_putstr_fd(WHITE, 2);
+				ft_putendl_fd(s, 2);
+				ft_putstr_fd(RESET, 2);
 				board[j] = ft_strdup(s + 4);
 				free(s);
 			}
@@ -141,7 +144,7 @@ int		main(void)
 	
 	put_arr(piece->map, piece->y);
 
-	//will_put(map, piece);
+	will_put(map, piece);
 	
 	del_map(&map);
 	del_map(&piece);
