@@ -141,7 +141,7 @@ int		main(void)
 	
 	put_arr(piece->map, piece->y);
 
-	will_put(map, piece);
+	//will_put(map, piece);
 	
 	del_map(&map);
 	del_map(&piece);

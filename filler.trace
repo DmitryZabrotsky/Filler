@@ -1,6 +1,5 @@
-seed = 6008
+seed = 2917
 X: error on input
-./dzabrots.filler: Segfault at 0
-./dzabrots.filler won
+./players/grati.filler won
 Score:
-0AGAINST0
+1AGAINST0
