@@ -5,8 +5,8 @@
 # include <stdio.h>
 
 char	*g_player;
-char	g_p;
-char	g_e;
+char	g_plr;
+char	g_enm;
 int		g_overlap;
 
 typedef struct s_map

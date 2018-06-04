@@ -8,8 +8,8 @@ void	parse_player(void)
 	if (ft_strstr(s, "dzabrots.filler"))
 		g_player = (ft_strstr(s, "p1") ? "p1" : "p2");
 	free(s);
-	g_p = ft_strequ(g_player, "p1") ? 'O' : 'X';
-	g_e = ft_strequ(g_player, "p1") ? 'X' : 'O';
+	g_plr = ft_strequ(g_player, "p1") ? 'O' : 'X';
+	g_enm = ft_strequ(g_player, "p1") ? 'X' : 'O';
 }
 
 int		parse_xy(char *s, char coord)
@@ -45,9 +45,9 @@ char	**parse_board(int i)
 		{
 			if (get_next_line(0, &s))
 			{	
-				ft_putstr_fd(WHITE, 2);
-				ft_putendl_fd(s, 2);
-				ft_putstr_fd(RESET, 2);
+				// ft_putstr_fd(WHITE, 2);
+				// ft_putendl_fd(s, 2);
+				// ft_putstr_fd(RESET, 2);
 				board[j] = ft_strdup(s + 4);
 				free(s);
 			}
@@ -120,46 +120,50 @@ t_map	*parse_piece(void)
 
 int		main(void)
 {
-	char *s;
+	//char *s;
 	t_map *map;
 	t_map *piece;
 
 	parse_player();
-	map = parse_map();
-	piece = parse_piece();
-
-	ft_putstr_fd(GREEN, 2);
-	ft_putendl_fd(g_player, 2);
-	ft_putstr_fd(RESET, 2);
-
-	ft_putstr_fd(BLUE, 2);
-	ft_putendl_fd(ft_itoa(map->x), 2);
-	ft_putendl_fd(ft_itoa(map->y), 2);
-	ft_putstr_fd(RESET, 2);
-
-	put_arr(map->map, map->y);
-
-	ft_putstr_fd(BLUE, 2);
-	ft_putendl_fd(ft_itoa(piece->x), 2);
-	ft_putendl_fd(ft_itoa(piece->y), 2);
-	ft_putstr_fd(RESET, 2);
-	
-	put_arr(piece->map, piece->y);
-
-	will_put(map, piece);
-	
-	del_map(&map);
-	del_map(&piece);
-
 	while (1)
 	{
-		while (get_next_line(0, &s))
-		{
-			ft_putstr_fd(RED, 2);
-			ft_putendl_fd(s, 2);
-			ft_putstr_fd(RESET, 2);
-			free(s);
-		}
-		ft_putendl_fd("3 3\n", 0);
+		map = parse_map();
+		piece = parse_piece();
+
+		if (!map || !piece)
+			break ;
+	// ft_putstr_fd(GREEN, 2);
+	// ft_putendl_fd(g_player, 2);
+	// ft_putstr_fd(RESET, 2);
+
+	// ft_putstr_fd(BLUE, 2);
+	// ft_putendl_fd(ft_itoa(map->x), 2);
+	// ft_putendl_fd(ft_itoa(map->y), 2);
+	// ft_putstr_fd(RESET, 2);
+
+	// put_arr(map->map, map->y);
+
+	// ft_putstr_fd(BLUE, 2);
+	// ft_putendl_fd(ft_itoa(piece->x), 2);
+	// ft_putendl_fd(ft_itoa(piece->y), 2);
+	// ft_putstr_fd(RESET, 2);
+	
+	// put_arr(piece->map, piece->y);
+
+		will_put(map, piece);
+	
+		del_map(&map);
+		del_map(&piece);
 	}
+	// while (1)
+	// {
+	// 	while (get_next_line(0, &s))
+	// 	{
+	// 		ft_putstr_fd(RED, 2);
+	// 		ft_putendl_fd(s, 2);
+	// 		ft_putstr_fd(RESET, 2);
+	// 		free(s);
+	// 	}
+	// 	//ft_putendl_fd("3 3\n", 0);
+	// }
 }
