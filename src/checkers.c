@@ -2,14 +2,10 @@
 
 static int		check_coord(int y, int x, t_map *map, t_map *piece)
 {
-	char p;
-	char e;
 	int i;
 	int j;
 
 	g_overlap = 0;
-	p = ft_strequ(g_player, "p1") ? 'O' : 'X'; // + 32 to lower
-	e = ft_strequ(g_player, "p1") ? 'X' : 'O';
 	i = 0;
 	while (i < piece->y)
 	{
@@ -18,26 +14,16 @@ static int		check_coord(int y, int x, t_map *map, t_map *piece)
 		{
 			if ((piece->map)[i][j] == '*')
 			{
-				// ft_putstr_fd(YELLOW, 2);
-				// ft_putstr_fd("[", 2);
-				// ft_putchar_fd((piece->map)[i][j], 2);
-				// ft_putstr_fd("]:[", 2);
-				// ft_putchar_fd((map->map)[i + y][j + x], 2);
-				// ft_putstr_fd("]", 2);
-				// ft_putstr_fd(RESET, 2);
-				if ((map->map)[i + y][j + x] == p || (map->map)[i + y][j + x] == p + 32)
+				if ((map->map)[i + y][j + x] == g_p || (map->map)[i + y][j + x] == g_p + 32)
 					g_overlap++;
-				if ((map->map)[i + y][j + x] == e || (map->map)[i + y][j + x] == e + 32)
+				if ((map->map)[i + y][j + x] == g_e || (map->map)[i + y][j + x] == g_e + 32)
 					return (0);
 			}
 			j++;
 		}
 		i++;
 	}
-	if (g_overlap == 1)
-		return (1);
-	else
-		return (0);
+	return (g_overlap == 1 ?  1 : 0);
 }
 
 void		will_put(t_map *map, t_map *piece)

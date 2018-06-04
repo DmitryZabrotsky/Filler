@@ -8,6 +8,8 @@ void	parse_player(void)
 	if (ft_strstr(s, "dzabrots.filler"))
 		g_player = (ft_strstr(s, "p1") ? "p1" : "p2");
 	free(s);
+	g_p = ft_strequ(g_player, "p1") ? 'O' : 'X';
+	g_e = ft_strequ(g_player, "p1") ? 'X' : 'O';
 }
 
 int		parse_xy(char *s, char coord)
