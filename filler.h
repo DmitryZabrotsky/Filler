@@ -12,6 +12,11 @@ int		g_plr_y;
 int		g_plr_x;
 int		g_enm_y;
 int		g_enm_x;
+int 	g_resi;
+int 	g_resy;
+
+int		g_bufy;
+int		g_bufx;
 
 typedef struct s_map
 {
