@@ -6,7 +6,7 @@ SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(C_FILES))
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a
-C_FILES = main.c utils.c checkers.c
+C_FILES = main.c utils.c checkers.c check_utils.c
 
 all: $(NAME)
 

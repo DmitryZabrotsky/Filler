@@ -78,10 +78,12 @@ void		will_put(t_map *map, t_map *piece)
 		}
 		i++;
 	}
-	ft_putstr_fd(ft_itoa(resi), 2);
-	ft_putstr_fd(" ", 2);
-	ft_putstr_fd(ft_itoa(resy), 2);
-	ft_putendl_fd("", 2);
+	// ft_putstr_fd(GREEN, 2);
+	// ft_putstr_fd(ft_itoa(resi), 2);
+	// ft_putstr_fd(" ", 2);
+	// ft_putstr_fd(ft_itoa(resy), 2);
+	// ft_putendl_fd("", 2);
+	// ft_putstr_fd(RESET, 2);
 	ft_putstr_fd(ft_itoa(resi), 1);
 	ft_putstr_fd(" ", 1);
 	ft_putstr_fd(ft_itoa(resy), 1);

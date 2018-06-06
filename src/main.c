@@ -4,12 +4,14 @@ void	parse_player(void)
 {
 	char *s;
 
-	get_next_line(0, &s);
-	if (ft_strstr(s, "dzabrots.filler"))
-		g_player = (ft_strstr(s, "p1") ? "p1" : "p2");
-	free(s);
-	g_plr = ft_strequ(g_player, "p1") ? 'O' : 'X';
-	g_enm = ft_strequ(g_player, "p1") ? 'X' : 'O';
+	if (get_next_line(0, &s))
+	{
+		if (ft_strstr(s, "dzabrots.filler"))
+			g_player = (ft_strstr(s, "p1") ? "p1" : "p2");
+		free(s);
+		g_plr = ft_strequ(g_player, "p1") ? 'O' : 'X';
+		g_enm = ft_strequ(g_player, "p1") ? 'X' : 'O';
+	}
 }
 
 int		parse_xy(char *s, char coord)
@@ -129,29 +131,38 @@ int		main(void)
 	{
 		map = parse_map();
 		piece = parse_piece();
+		find_location(map);
+
+	ft_putstr_fd(BLUE, 2);
+	ft_putendl_fd(ft_itoa(g_plr_y), 2);
+	ft_putendl_fd(ft_itoa(g_plr_x), 2);
+	ft_putstr_fd(RESET, 2);
+	ft_putstr_fd(RED, 2);
+	ft_putendl_fd(ft_itoa(g_enm_y), 2);
+	ft_putendl_fd(ft_itoa(g_enm_x), 2);
+	ft_putstr_fd(RESET, 2);
 
 		if (!map || !piece)
 			break ;
-	// ft_putstr_fd(GREEN, 2);
-	// ft_putendl_fd(g_player, 2);
-	// ft_putstr_fd(RESET, 2);
+	ft_putstr_fd(GREEN, 2);
+	ft_putendl_fd(g_player, 2);
+	ft_putstr_fd(RESET, 2);
+
+	ft_putstr_fd(BLUE, 2);
+	ft_putendl_fd(ft_itoa(map->y), 2);
+	ft_putendl_fd(ft_itoa(map->x), 2);
+	ft_putstr_fd(RESET, 2);
+
+	put_arr(map->map, map->y);
 
 	// ft_putstr_fd(BLUE, 2);
-	// ft_putendl_fd(ft_itoa(map->x), 2);
-	// ft_putendl_fd(ft_itoa(map->y), 2);
-	// ft_putstr_fd(RESET, 2);
-
-	// put_arr(map->map, map->y);
-
-	// ft_putstr_fd(BLUE, 2);
-	// ft_putendl_fd(ft_itoa(piece->x), 2);
 	// ft_putendl_fd(ft_itoa(piece->y), 2);
+	// ft_putendl_fd(ft_itoa(piece->x), 2);
 	// ft_putstr_fd(RESET, 2);
 	
 	// put_arr(piece->map, piece->y);
 
 		will_put(map, piece);
-	
 		del_map(&map);
 		del_map(&piece);
 	}
