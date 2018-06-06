@@ -37,46 +37,75 @@ static int		check_coord(int y, int x, t_map *map, t_map *piece)
 void		will_put(t_map *map, t_map *piece)
 {
 	//char *res;
-	// int end_x;
-	// int end_y;
+	int end_x;
+	int end_y;
 	int i;
 	int j;
 
 	int resi = 0;
 	int resy = 0;
 
-	// end_x = map->x - piece->x;
-	// end_y = map->y - piece->y;
+	end_x = map->x - piece->x + 1;
+	end_y = map->y - piece->y + 1;
 	i = 0;
-	while (i < map->y)
+
+	if (g_plr_y < g_enm_y)
 	{
-		j = 0;
-		while (j < map->x)
+
+		while (i < end_y)
 		{
-			if (check_coord(i, j, map, piece))
+			j = 0;
+			while (j < end_x)
 			{
-				resi = i;
-				resy = j;
-				// ft_putstr_fd(CYAN, 2);
-				// ft_putstr_fd(ft_itoa(i), 2);
-				// ft_putstr_fd(":", 2);
-				// ft_putstr_fd(ft_itoa(j), 2);
-				// ft_putstr_fd(" ", 2);
-				// ft_putstr_fd(RESET, 2);
+				if (check_coord(i, j, map, piece))
+				{
+					resi = i;
+					resy = j;
+					// ft_putstr_fd(CYAN, 2);
+					// ft_putstr_fd(ft_itoa(i), 2);
+					// ft_putstr_fd(":", 2);
+					// ft_putstr_fd(ft_itoa(j), 2);
+					// ft_putstr_fd(" ", 2);
+					// ft_putstr_fd(RESET, 2);
+				}
+				// else
+				// {
+				// 	ft_putstr_fd(BLACK, 2);
+				// 	ft_putstr_fd(" ", 2);
+				// 	ft_putstr_fd(ft_itoa(i), 2);
+				// 	ft_putstr_fd(":", 2);
+				// 	ft_putstr_fd(ft_itoa(j), 2);
+				// 	ft_putstr_fd(" ", 2);
+				// 	ft_putstr_fd(RESET, 2);
+				// }
+				j++;
 			}
-			// else
-			// {
-			// 	ft_putstr_fd(BLACK, 2);
-			// 	ft_putstr_fd(" ", 2);
-			// 	ft_putstr_fd(ft_itoa(i), 2);
-			// 	ft_putstr_fd(":", 2);
-			// 	ft_putstr_fd(ft_itoa(j), 2);
-			// 	ft_putstr_fd(" ", 2);
-			// 	ft_putstr_fd(RESET, 2);
-			// }
-			j++;
+			i++;
 		}
-		i++;
+
+	}
+
+	if (g_plr_y > g_enm_y)
+	{
+		i = end_y - 1;
+		while (i)
+		{
+			j = end_x - 1;
+			while (j)
+			{
+				// ft_putstr_fd(ft_itoa(i), 2);
+				// ft_putstr_fd(" ", 2);
+				// ft_putstr_fd(ft_itoa(j), 2);
+				// ft_putendl_fd("", 2);
+				if (check_coord(i, j, map, piece))
+				{
+					resi = i;
+					resy = j;
+				}
+				j--;
+			}
+			i--;
+		}
 	}
 	// ft_putstr_fd(GREEN, 2);
 	// ft_putstr_fd(ft_itoa(resi), 2);

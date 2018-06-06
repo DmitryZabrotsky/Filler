@@ -133,27 +133,32 @@ int		main(void)
 		piece = parse_piece();
 		find_location(map);
 
-	ft_putstr_fd(BLUE, 2);
-	ft_putendl_fd(ft_itoa(g_plr_y), 2);
-	ft_putendl_fd(ft_itoa(g_plr_x), 2);
-	ft_putstr_fd(RESET, 2);
-	ft_putstr_fd(RED, 2);
-	ft_putendl_fd(ft_itoa(g_enm_y), 2);
-	ft_putendl_fd(ft_itoa(g_enm_x), 2);
-	ft_putstr_fd(RESET, 2);
+	// ft_putstr_fd(BLUE, 2);
+	// ft_putendl_fd("PLR Y;X:", 2);
+	// ft_putendl_fd(ft_itoa(g_plr_y), 2);
+	// ft_putendl_fd(ft_itoa(g_plr_x), 2);
+	// ft_putstr_fd(RESET, 2);
+	// ft_putstr_fd(RED, 2);
+	// ft_putendl_fd("ENM Y;X:", 2);
+	// ft_putendl_fd(ft_itoa(g_enm_y), 2);
+	// ft_putendl_fd(ft_itoa(g_enm_x), 2);
+	// ft_putstr_fd(RESET, 2);
 
 		if (!map || !piece)
 			break ;
-	ft_putstr_fd(GREEN, 2);
-	ft_putendl_fd(g_player, 2);
-	ft_putstr_fd(RESET, 2);
+		
+	// ft_putstr_fd(GREEN, 2);
+	// ft_putstr_fd("PLAYER: ", 2);
+	// ft_putendl_fd(g_player, 2);
+	// ft_putstr_fd(RESET, 2);
 
-	ft_putstr_fd(BLUE, 2);
-	ft_putendl_fd(ft_itoa(map->y), 2);
-	ft_putendl_fd(ft_itoa(map->x), 2);
-	ft_putstr_fd(RESET, 2);
+	// ft_putstr_fd(BLUE, 2);
+	// ft_putendl_fd("MAP Y;X:", 2);
+	// ft_putendl_fd(ft_itoa(map->y), 2);
+	// ft_putendl_fd(ft_itoa(map->x), 2);
+	// ft_putstr_fd(RESET, 2);
 
-	put_arr(map->map, map->y);
+	// put_arr(map->map, map->y);
 
 	// ft_putstr_fd(BLUE, 2);
 	// ft_putendl_fd(ft_itoa(piece->y), 2);
