@@ -157,7 +157,7 @@ void		will_put(t_map *map, t_map *piece)
 	if (g_plr_y < g_enm_y)
 		side_4(map, piece);
 	else if (g_plr_y > g_enm_y)
-		side_1(map, piece);
+		side_3(map, piece);
 	if (if_enm_near(g_resy, g_resx, map, piece))
 	{
 		if (g_plr_y < g_enm_y)
@@ -168,9 +168,9 @@ void		will_put(t_map *map, t_map *piece)
 		}
 		else if (g_plr_y > g_enm_y)
 		{
-			enm_side_4(map, piece);
-			if(!(if_enm_near(g_resy, g_resx, map, piece)))
-				enm_side_2(map, piece);
+			enm_side_1(map, piece);
+			if (g_resy == map->y - 1)
+				side_2(map, piece);
 		}
 	}
 	// upperleft(map, piece);
