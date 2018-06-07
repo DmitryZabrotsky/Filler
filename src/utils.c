@@ -7,7 +7,9 @@ t_map	*create_map(void)
 	{
 		ret->x = 0;
 		ret->y = 0;
-		ret->map = NULL; 
+		ret->map = NULL;
+		ret->end_x = 0;
+		ret->end_y = 0;
 	}
 	return (ret);
 }
