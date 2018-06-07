@@ -34,4 +34,14 @@ void	put_arr(char **arr, int len);
 void	will_put(t_map *map, t_map *piece);
 
 void	find_location(t_map *map);
+
+void	create_int_map(t_map *map);
+
+int		check_coord(int y, int x, t_map *map, t_map *piece);
+int		if_enm_near(int y, int x, t_map *map, t_map *piece);
+
+void		enm_side_1(t_map *map, t_map *piece);
+void		enm_side_2(t_map *map, t_map *piece);
+void		enm_side_3(t_map *map, t_map *piece);
+void		enm_side_4(t_map *map, t_map *piece);
 #endif
