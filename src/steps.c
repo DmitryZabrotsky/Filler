@@ -1,6 +1,6 @@
 #include "../filler.h"
 
-void		move_near_enm_3(t_map *map, t_map *piece)
+void		move_to_3(t_map *map, t_map *piece)
 {
 	int y;
 	int x;
@@ -15,8 +15,7 @@ void		move_near_enm_3(t_map *map, t_map *piece)
 			{
 				g_resy = y;
 				g_resx = x;
-				if_enm_near(map, piece);
-					break ;
+				break ;
 			}
 			x++;
 		}
@@ -24,7 +23,7 @@ void		move_near_enm_3(t_map *map, t_map *piece)
 	}
 }
 
-void		move_near_enm_4(t_map *map, t_map *piece)
+void		move_to_4(t_map *map, t_map *piece)
 {
 	int y;
 	int x;
@@ -39,15 +38,14 @@ void		move_near_enm_4(t_map *map, t_map *piece)
 			{
 				g_resy = y;
 				g_resx = x;
-				if_enm_near(map, piece);
-					break ;
+				break ;
 			}
 		}
 		y++;
 	}
 }
 
-void		move_near_enm_1(t_map *map, t_map *piece)
+void		move_to_1(t_map *map, t_map *piece)
 {
 	int y;
 	int x;
@@ -62,15 +60,14 @@ void		move_near_enm_1(t_map *map, t_map *piece)
 			{
 				g_resy = y;
 				g_resx = x;
-				if_enm_near(map, piece);
-					break ;
+				break ;
 			}
 			x++;
 		}
 	}
 }
 
-void		move_near_enm_2(t_map *map, t_map *piece)
+void		move_to_2(t_map *map, t_map *piece)
 {
 	int y;
 	int x;
@@ -85,8 +82,7 @@ void		move_near_enm_2(t_map *map, t_map *piece)
 			{
 				g_resy = y;
 				g_resx = x;
-				if_enm_near(map, piece);
-					break ;
+				break ;
 			}
 		}
 	}
