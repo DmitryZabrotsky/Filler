@@ -34,6 +34,26 @@ int		check_coord(int y, int x, t_map *map, t_map *piece)
 	return (g_overlap == 1 ?  1 : 0);
 }
 
+int		is_enm_near(int x, int y, t_map *map)
+{
+	int		x1;
+	int		y1;
+
+	y1 = y - 1;
+	while (y1 > -1 && y1 < map->y && y1 <= y + 1)
+	{
+		x1 = x - 1;
+		while (x1 > -1 && x1 < map->x && x1 <= x + 1)
+		{
+			if (map->map[y1][x1] == g_enm|| map->map[y1][x1] == g_enm - 32)
+				return (1);
+			x1++;
+		}
+		y1++;
+	}
+	return (0);
+}
+
 int			if_enm_near(int y, int x, t_map *map, t_map *piece)
 {
 	int i;
@@ -49,8 +69,7 @@ int			if_enm_near(int y, int x, t_map *map, t_map *piece)
 				return (0);
 			if ((piece->map)[i][j] == '.')
 			{	
-				if ((map->map)[i + y][j + x] == g_enm ||
-					(map->map)[i + y][j + x] == g_enm + 32)
+				if (is_enm_near(i, j, map))
 					return (1);
 			}
 			j++;
@@ -157,22 +176,9 @@ void		will_put(t_map *map, t_map *piece)
 	if (g_plr_y < g_enm_y)
 		side_4(map, piece);
 	else if (g_plr_y > g_enm_y)
-		side_3(map, piece);
-	if (if_enm_near(g_resy, g_resx, map, piece))
-	{
-		if (g_plr_y < g_enm_y)
-		{
-			enm_side_1(map, piece);
-			if (g_resy == map->y - 1)
-				side_2(map, piece);
-		}
-		else if (g_plr_y > g_enm_y)
-		{
-			enm_side_1(map, piece);
-			if (g_resy == map->y - 1)
-				side_2(map, piece);
-		}
-	}
+		side_1(map, piece);
+
+
 	// upperleft(map, piece);
 	// upperright(map, piece);
 	// lowerleft(map, piece);
