@@ -1,6 +1,71 @@
 #include "../filler.h"
 #include <stdio.h>
 
+void	print_int_arr(int y, int x, int **int_arr)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < y)
+	{
+		j = 0;
+		while (j < x)
+		{
+			printf("%i", int_arr[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
+
+int 	if_still_zero(int y, int x, int **int_arr)
+{
+	int i;
+	int j;
+	int res;
+
+	res = 0;
+	i = 0;
+	while (i < y)
+	{
+		j = 0;
+		while (j < x)
+		{
+			if (int_arr[i][j] == 0)
+				res++;
+			j++;
+		}
+		i++;
+	}
+	return (res ? 1 : 0);
+}
+
+int		set_num(int y, int x, int num, int **map, int my, int mx)
+{
+	int		x1;
+	int		y1;
+
+	y1 = y - 1;
+	while (y1 > -1 && y1 < my && y1 <= y + 1)
+	{
+		x1 = x - 1;
+		while (x1 > -1 && x1 < mx && x1 <= x + 1)
+		{
+			// printf("before if[%i][%i]%i", y1, x1, map[y1][x1]);
+			if (map[y1][x1] == 0)
+			{
+				// printf("map[%i][%i]%i", y1, x1, map[y1][x1]);
+				map[y1][x1] = num;
+			}
+			x1++;
+		}
+		y1++;
+	}
+	return (0);
+}
+
 void func(void)
 {
 	int **int_arr;
@@ -55,21 +120,36 @@ void func(void)
 		}
 		i++;
 	}
-	//printf("SIG?\n");
-	i = 0;
-	while (i < y)
-	{
-		//printf("SIG?1\n");
-		j = 0;
-		while (j < x)
+
+	int target = 1;
+	int num = 2;
+
+
+	while (if_still_zero(y, x, int_arr))
+	{	
+		i = 0;
+		while (i < y)
 		{
-			//printf("SIG?2\n");
-			printf("%i", int_arr[i][j]);
-			j++;
+			j = 0;
+			while (j < x)
+			{
+				//printf("map before if[%i][%i]%i\n", i, j, int_arr[i][j]);
+				if (int_arr[i][j] == target)
+				{
+					//printf("map[%i][%i]%i", i, j, int_arr[i][j]);
+					set_num( i, j, num, int_arr, y, x);
+				}
+				j++;
+			}
+			i++;
 		}
-		printf("\n");
-		i++;
+		target++;
+		num++;
+		//print_int_arr(y, x, int_arr);
+		//printf("\n");
 	}
+
+	print_int_arr(y, x, int_arr);
 }
 
 int main(void)
