@@ -120,13 +120,68 @@ void		handle_int_map(t_int_map *int_map)
 	}
 }
 
-void		handle_coords(t_map *map)
+void		choose_coord(int y, int x, int value)
+{
+	if (g_value == 0)
+	{
+		g_value = value;
+		g_resy = y;
+		g_resx = x;
+	}
+	g_resy = value < g_value ? y : g_resy;
+	g_resx = value < g_value ? x : g_resx;
+	g_value = value < g_value ? value : g_value;
+
+	// ft_putstr_fd(BLUE, 2);
+	// ft_putstr_fd(ft_itoa(value), 2);
+	// ft_putstr_fd(RESET, 2);
+	// ft_putstr_fd(RED, 2);
+	// ft_putstr_fd(" ? ", 2);
+	// ft_putstr_fd(ft_itoa(g_value), 2);
+	// ft_putstr_fd(RESET, 2);
+	// ft_putstr_fd("\n", 2);
+}
+
+void		find_lightest_coord(int y, int x, t_map *piece, t_int_map *int_map)
+{
+	int i;
+	int j;
+	int current_value;
+
+	current_value = 0;
+	i = 0;
+	while (i < piece->y)
+	{
+		j = 0;
+		while (j < piece->x)
+		{
+			if (i + y > int_map->y - 1 || j + x > int_map->x - 1)
+				break ;
+			if ((piece->map)[i][j] == '*')
+			{
+	// ft_putstr_fd(YELLOW, 2);
+	// ft_putchar_fd((piece->map)[i][j], 2);
+	// ft_putstr_fd(RESET, 2);
+	// ft_putstr_fd("\n", 2);
+				current_value += int_map->int_arr[i + y][j + x];
+			}
+			j++;
+		}
+		i++;
+	}
+	choose_coord(y, x, current_value);
+}
+
+void		handle_coords(int y, int x, t_map *piece, t_map *map)
 {
 	t_int_map	*int_map;
 
 	int_map = create_int_map(map->y, map->x);
 	fill_int_map(map->y, map->x, map, int_map);
 	handle_int_map(int_map);
-	print_int_arr(int_map->y, int_map->x, int_map->int_arr);
+	//print_int_arr(int_map->y, int_map->x, int_map->int_arr);
+
+	find_lightest_coord(y, x, piece, int_map);
+
 	del_int_map(&int_map);
 }

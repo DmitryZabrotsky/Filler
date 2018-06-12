@@ -12,6 +12,7 @@ int		g_plr_y;
 int		g_plr_x;
 int		g_enm_y;
 int		g_enm_x;
+int		g_value;
 int 	g_resy;
 int 	g_resx;
 
@@ -48,7 +49,7 @@ void	put_arr(char **arr, int len);
 void	del_int_map(t_int_map **del);
 
 void	will_put(t_map *map, t_map *piece);
-void	handle_coords(t_map *map); //
+void	handle_coords(int y, int x, t_map *piece, t_map *map); //
 
 void	find_location(t_map *map);
 

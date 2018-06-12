@@ -31,13 +31,13 @@ void		will_put(t_map *map, t_map *piece)
 	map->end_x = map->x - piece->x + 1;
 	if (g_plr_y < g_enm_y)
 	{
-		move_near_enm_4(map, piece);
-		handle_coords(map);
+		move_to_4(map, piece);
+		//handle_coords(map);
 	}
 	else if (g_plr_y > g_enm_y)
 	{
 		move_to_1(map, piece);
-		handle_coords(map);
+		//handle_coords(map);
 	}
 
 
@@ -48,10 +48,12 @@ void		will_put(t_map *map, t_map *piece)
 	// ft_putstr_fd(ft_itoa(g_resx), 2);
 	// ft_putendl_fd("", 2);
 	// ft_putstr_fd(RESET, 2);
+
 	ft_putstr_fd(ft_itoa(g_resy), 1);
 	ft_putstr_fd(" ", 1);
 	ft_putstr_fd(ft_itoa(g_resx), 1);
 	ft_putstr_fd("\n", 1);
+	g_value = 0;
 }
 
 int		main(void)
