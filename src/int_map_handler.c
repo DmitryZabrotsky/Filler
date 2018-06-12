@@ -40,7 +40,7 @@ void		fill_int_map(int y, int x, t_map *map, t_int_map *int_map)
 		j = 0;
 		while (j < x)
 		{
-			if (map->map[i][j] == 'o' || map->map[i][j] == 'O')
+			if (map->map[i][j] == g_enm || map->map[i][j] == g_enm + 32)
 				int_map->int_arr[i][j] = 1;
 			else
 				int_map->int_arr[i][j] = 0;
@@ -128,4 +128,5 @@ void		handle_coords(t_map *map)
 	fill_int_map(map->y, map->x, map, int_map);
 	handle_int_map(int_map);
 	print_int_arr(int_map->y, int_map->x, int_map->int_arr);
+	del_int_map(&int_map);
 }

@@ -45,6 +45,7 @@ t_map	*parse_piece(void);
 
 void	del_map(t_map **del);
 void	put_arr(char **arr, int len);
+void	del_int_map(t_int_map **del);
 
 void	will_put(t_map *map, t_map *piece);
 void	handle_coords(t_map *map); //
