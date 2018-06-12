@@ -55,4 +55,5 @@ void		move_near_enm_1(t_map *map, t_map *piece);
 void		move_near_enm_2(t_map *map, t_map *piece);
 void		move_near_enm_3(t_map *map, t_map *piece);
 void		move_near_enm_4(t_map *map, t_map *piece);
+
 #endif
