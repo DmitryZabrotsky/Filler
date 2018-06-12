@@ -1,27 +1,27 @@
 #include "../filler.h"
 
-int			back_to_back(t_map *map)
-{
-	int y;
-	int x;
+// int			back_to_back(t_map *map)
+// {
+// 	int y;
+// 	int x;
 
-	y = 0;
-	while (y < map->y)
-	{
-		x = 0;
-		while (x < map->x)
-		{
-			if ((map->map)[y][x] == g_plr)
-			{
-				is_enm_near(y, x, map);
-					return (1);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (0);
-}
+// 	y = 0;
+// 	while (y < map->y)
+// 	{
+// 		x = 0;
+// 		while (x < map->x)
+// 		{
+// 			if ((map->map)[y][x] == g_plr)
+// 			{
+// 				is_enm_near(y, x, map);
+// 					return (1);
+// 			}
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	return (0);
+// }
 
 void		will_put(t_map *map, t_map *piece)
 {
@@ -29,15 +29,19 @@ void		will_put(t_map *map, t_map *piece)
 	g_resy = 0;
 	map->end_y = map->y - piece->y + 1;
 	map->end_x = map->x - piece->x + 1;
-	if (back_to_back(map))
-		move_near_enm_2(map, piece);
-	else
+	if (g_plr_y < g_enm_y)
 	{
-		if (g_plr_y < g_enm_y)
-			move_near_enm_4(map, piece);
-		else if (g_plr_y > g_enm_y)
-			move_to_1(map, piece);
+		move_near_enm_4(map, piece);
+		handle_coords(map);
 	}
+	else if (g_plr_y > g_enm_y)
+	{
+		move_to_1(map, piece);
+		handle_coords(map);
+	}
+
+
+
 	// ft_putstr_fd(GREEN, 2);
 	// ft_putstr_fd(ft_itoa(g_resy), 2);
 	// ft_putstr_fd(" ", 2);

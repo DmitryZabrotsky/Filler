@@ -27,7 +27,17 @@ typedef struct s_map
 	int			end_y;
 }				t_map;
 
+typedef struct s_int_map
+{
+	int			**int_arr;
+	int			y;
+	int			x;
+	int			target;
+	int			num;	
+}				t_int_map;
+
 t_map	*create_map(void);
+t_int_map	*create_int_map(int y, int x); //
 
 void	parse_player(void);
 t_map	*parse_map(void);
@@ -37,10 +47,9 @@ void	del_map(t_map **del);
 void	put_arr(char **arr, int len);
 
 void	will_put(t_map *map, t_map *piece);
+void	handle_coords(t_map *map); //
 
 void	find_location(t_map *map);
-
-void	create_int_map(t_map *map);
 
 int		check_coord(int y, int x, t_map *map, t_map *piece);
 int		if_enm_near(t_map *map, t_map *piece);
