@@ -82,9 +82,10 @@ void		move_to_2(t_map *map, t_map *piece)
 		{
 			if (check_coord(y, x, map, piece))
 			{
-				g_resy = y;
-				g_resx = x;
-				break ;
+				handle_coords(y, x, piece, map);
+				// g_resy = y;
+				// g_resx = x;
+				// break ;
 			}
 		}
 	}

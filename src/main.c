@@ -29,7 +29,11 @@ void		will_put(t_map *map, t_map *piece)
 	g_resy = 0;
 	map->end_y = map->y - piece->y + 1;
 	map->end_x = map->x - piece->x + 1;
-	if (g_plr_y < g_enm_y)
+	if (map->y * map->x <= 256 && g_plr_y > g_enm_y)
+	{
+		move_to_4(map, piece);
+	}
+	else if (g_plr_y < g_enm_y)
 	{
 		move_to_4(map, piece);
 		//handle_coords(map);
