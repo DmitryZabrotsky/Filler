@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzabrots <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/14 17:18:29 by dzabrots          #+#    #+#             */
+/*   Updated: 2018/06/14 17:18:31 by dzabrots         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../filler.h"
 
-t_map	*create_map(void)
+t_map		*create_map(void)
 {
-	t_map *ret;
+	t_map		*ret;
 
 	if ((ret = (t_map *)malloc(sizeof(t_map))))
 	{
@@ -30,7 +42,7 @@ t_int_map	*create_int_map(int y, int x)
 	return (ret);
 }
 
-void	del_map(t_map **del)
+void		del_map(t_map **del)
 {
 	if (*del)
 	{
@@ -41,9 +53,9 @@ void	del_map(t_map **del)
 	*del = NULL;
 }
 
-void	del_int_map(t_int_map **del)
+void		del_int_map(t_int_map **del)
 {
-	int i;
+	int		i;
 
 	if (*(del) && (*del)->int_arr)
 	{
@@ -57,17 +69,13 @@ void	del_int_map(t_int_map **del)
 	}
 }
 
-void	put_arr(char **arr, int len)
+void		put_arr(char **arr, int len)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i != len)
 	{
-		// ft_putstr_fd(RED, 2);
-		// ft_putendl_fd("TRYING TO OUT ARR", 2);
-		// ft_putstr_fd(RESET, 2);
-
 		ft_putstr_fd(YELLOW, 2);
 		ft_putendl_fd(arr[i], 2);
 		ft_putstr_fd(RESET, 2);

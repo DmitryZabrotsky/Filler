@@ -6,7 +6,8 @@ SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(C_FILES))
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a
-C_FILES = main.c utils.c checkers.c check_utils.c if_enm_near.c parse.c steps.c int_map_handler.c
+C_FILES = main.c utils.c checker.c int_map_utils.c \
+	parse.c steps.c int_map_handler.c parse_player.c
 
 all: $(NAME)
 

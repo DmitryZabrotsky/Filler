@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   steps.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzabrots <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/14 17:18:19 by dzabrots          #+#    #+#             */
+/*   Updated: 2018/06/14 17:18:21 by dzabrots         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../filler.h"
 
 void		move_to_3(t_map *map, t_map *piece)
@@ -12,11 +24,7 @@ void		move_to_3(t_map *map, t_map *piece)
 		while (x < map->x)
 		{
 			if (check_coord(y, x, map, piece))
-			{
-				g_resy = y;
-				g_resx = x;
-				break ;
-			}
+				handle_coords(y, x, piece, map);
 			x++;
 		}
 		y++;
@@ -35,12 +43,7 @@ void		move_to_4(t_map *map, t_map *piece)
 		while (--x >= 0)
 		{
 			if (check_coord(y, x, map, piece))
-			{
 				handle_coords(y, x, piece, map);
-				// g_resy = y;
-				// g_resx = x;
-				// break ;
-			}
 		}
 		y++;
 	}
@@ -58,12 +61,7 @@ void		move_to_1(t_map *map, t_map *piece)
 		while (x < map->x)
 		{
 			if (check_coord(y, x, map, piece))
-			{
 				handle_coords(y, x, piece, map);
-				// g_resy = y;
-				// g_resx = x;
-				// break ;
-			}
 			x++;
 		}
 	}
@@ -81,12 +79,7 @@ void		move_to_2(t_map *map, t_map *piece)
 		while (--x >= 0)
 		{
 			if (check_coord(y, x, map, piece))
-			{
 				handle_coords(y, x, piece, map);
-				// g_resy = y;
-				// g_resx = x;
-				// break ;
-			}
 		}
 	}
 }
