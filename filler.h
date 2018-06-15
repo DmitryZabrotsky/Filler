@@ -14,7 +14,6 @@
 # define FILLER_H
 
 # include "./libft/incl/libft.h"
-# include <stdio.h>
 
 char			*g_player;
 char			g_plr;
