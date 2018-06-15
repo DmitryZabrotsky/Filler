@@ -12,7 +12,7 @@
 
 #include "../filler.h"
 
-int				set_num(int y, int x, t_int_map *int_map)
+static int				set_num(int y, int x, t_int_map *int_map)
 {
 	int			i;
 	int			j;
@@ -32,7 +32,7 @@ int				set_num(int y, int x, t_int_map *int_map)
 	return (0);
 }
 
-void			handle_int_map(t_int_map *int_map)
+static void			handle_int_map(t_int_map *int_map)
 {
 	int			i;
 	int			j;
@@ -56,7 +56,7 @@ void			handle_int_map(t_int_map *int_map)
 	}
 }
 
-void			choose_coord(int y, int x, int value)
+static void			choose_coord(int y, int x, int value)
 {
 	if (g_value == 0)
 	{
@@ -69,7 +69,7 @@ void			choose_coord(int y, int x, int value)
 	g_value = value < g_value ? value : g_value;
 }
 
-void			find_lightest_coord(int y, int x, t_map *piece,
+static void			find_lightest_coord(int y, int x, t_map *piece,
 				t_int_map *int_map)
 {
 	int			i;

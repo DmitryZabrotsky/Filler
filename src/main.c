@@ -12,7 +12,7 @@
 
 #include "../filler.h"
 
-void		will_put(t_map *map, t_map *piece)
+static void		will_put(t_map *map, t_map *piece)
 {
 	char	*y;
 	char	*x;
