@@ -27,63 +27,73 @@ static int			parse_xy(char *s, char coord)
 	return (res);
 }
 
-static char			**parse_board(int i)
+void				print_line(char *s, int x)
 {
-	char			**board;
+	int i;
+	i = 0;
+
+	if (ft_strstr(s, "0123456789"))
+	{
+		ft_putstr_fd(WHITE, 2);
+		ft_putendl_fd(s, 2);
+		ft_putstr_fd(RESET, 2);
+	}
+	else if (s[3] == ' ')
+	{
+		while (i <= 3)
+		{
+			ft_putstr_fd(WHITE, 2);
+			ft_putchar_fd(s[i], 2);
+			ft_putstr_fd(RESET, 2);
+			i++;
+		}
+		while (i < x + 4)
+		{
+			if (s[i] == '.')
+			{
+				ft_putstr_fd(BLACK, 2);
+				ft_putchar_fd(s[i], 2);
+				ft_putstr_fd(RESET, 2);
+			}
+			else if (s[i] == 'O' || s[i] == 'o')
+			{
+				ft_putstr_fd(BLUE, 2);
+				ft_putchar_fd(s[i], 2);
+				ft_putstr_fd(RESET, 2);
+			}
+			else if (s[i] == 'X' || s[i] == 'x')
+			{
+				ft_putstr_fd(YELLOW, 2);
+				ft_putchar_fd(s[i], 2);
+				ft_putstr_fd(RESET, 2);
+			}
+			i++;
+		}
+		ft_putendl_fd("", 2);
+	}
+}
+
+static void			parse_board(int i, int x)
+{
 	char			*s;
 	int				len;
 	int				j;
 
-	len = i + 2;
+	len = i;
 	j = 0;
-	if (i > 90)
-		usleep(110000);
-	else
-		usleep(30000);
-	system("clear");
-	if ((board = (char **)malloc(sizeof(char *) * len)))
+	while (j < i)
 	{
-		board[i] = NULL;
-		while (j < i)
+		if (get_next_line(0, &s))
 		{
-			if (get_next_line(0, &s))
-			{
-					ft_putstr_fd(BLACK, 2);
-					ft_putendl_fd(s, 2);
-					ft_putstr_fd(RESET, 2);
-				board[j] = ft_strdup(s);
-				free(s);
-			}
-			j++;
+			// ft_putstr_fd(MAGENTA, 2);
+			// ft_putendl_fd(s, 2);
+			// ft_putstr_fd(RESET, 2);
+			print_line(s, x);
+			free(s);
 		}
+		j++;
 	}
-	return (board);
 }
-
-// t_res				*parse_res(void)
-// {
-// 	t_res			*res;
-// 	char			*s;
-
-// 	res = create_res();
-// 	if (get_next_line(0, &s))
-// 	{
-// 		if ((ft_strstr(s, "== O fin:")))
-// 			res->score_o = ft_strdup(s);
-// 		free(s);
-// 	}
-// 	if (get_next_line(0, &s))
-// 	{
-// 		if ((ft_strstr(s, "== X fin:")))
-// 			res->score_x = ft_strdup(s);
-// 		free(s);
-// 	}
-// 	// ft_putstr_fd(RED, 2);
-// 	// ft_putendl_fd(res->score_o, 2);
-// 	// ft_putendl_fd(res->score_x, 2);
-// 	// ft_putstr_fd(RESET, 2);
-// 	return (res);
-// }
 
 t_map				*parse_map(void)
 {
@@ -95,11 +105,23 @@ t_map				*parse_map(void)
 	{
 		if (ft_strstr(s, "Plateau"))
 		{
-			map->plateau = ft_strdup(s);
 			map->x = parse_xy(s, 'x');
 			map->y = parse_xy(s, 'y');
+			if (map->y > 90)
+				usleep(110000);
+			else if (map->y > 20)
+				usleep(45000);
+			else
+				usleep(20000);
+			system("clear");
+			
+			ft_putstr_fd(WHITE, 2);
+			ft_putendl_fd(s, 2);
+			ft_putstr_fd(RESET, 2);
+			
 			free(s);
-			map->map = parse_board(map->y + 1);
+			parse_board(map->y + 1, map->x);
+
 		}
 		else if ((ft_strstr(s, "== O fin:")))
 		{	
