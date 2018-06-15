@@ -18,6 +18,6 @@ t_map			*create_map(void);
 void			parse_player(void);
 t_map			*parse_map(void);
 
-void			put_arr(char **arr, int len);
+void			print_line(char *s, int x);
 
 #endif

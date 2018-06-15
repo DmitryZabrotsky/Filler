@@ -23,17 +23,3 @@ t_map		*create_map(void)
 	}
 	return (ret);
 }
-
-void		put_arr(char **arr, int len)
-{
-	int		i;
-
-	i = 0;
-	while (i != len)
-	{
-		ft_putstr_fd(BLUE, 2);
-		ft_putendl_fd(arr[i], 2);
-		ft_putstr_fd(RESET, 2);
-		i++;
-	}
-}
