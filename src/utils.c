@@ -67,6 +67,8 @@ void		del_int_map(t_int_map **del)
 		}
 		free((*del)->int_arr);
 	}
+	free(*del);
+	*del = NULL;
 }
 
 void		put_arr(char **arr, int len)

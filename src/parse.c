@@ -67,6 +67,7 @@ t_map				*parse_map(void)
 			map->x = parse_xy(s, 'x');
 			map->y = parse_xy(s, 'y');
 		}
+		free(s);
 	}
 	map->map = parse_board(map->y);
 	return (map);
@@ -110,6 +111,7 @@ t_map				*parse_piece(void)
 			piece->x = parse_xy(s, 'x');
 			piece->y = parse_xy(s, 'y');
 		}
+		free(s);
 	}
 	piece->map = parse_figure(piece->y);
 	return (piece);

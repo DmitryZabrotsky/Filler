@@ -14,6 +14,9 @@
 
 void		will_put(t_map *map, t_map *piece)
 {
+	char	*y;
+	char	*x;
+
 	g_resx = 0;
 	g_resy = 0;
 	map->end_y = map->y - piece->y + 1;
@@ -24,11 +27,15 @@ void		will_put(t_map *map, t_map *piece)
 		move_to_4(map, piece);
 	else if (g_plr_y > g_enm_y)
 		move_to_1(map, piece);
-	ft_putstr_fd(ft_itoa(g_resy), 1);
+	y = ft_itoa(g_resy);
+	x = ft_itoa(g_resx);
+	ft_putstr_fd(y, 1);
 	ft_putstr_fd(" ", 1);
-	ft_putstr_fd(ft_itoa(g_resx), 1);
+	ft_putstr_fd(x, 1);
 	ft_putstr_fd("\n", 1);
 	g_value = 0;
+	free(y);
+	free(x);
 }
 
 int			main(void)
