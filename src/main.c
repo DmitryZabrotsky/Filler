@@ -14,8 +14,8 @@
 
 static void		will_put(t_map *map, t_map *piece)
 {
-	char	*y;
-	char	*x;
+	char		*y;
+	char		*x;
 
 	g_resx = 0;
 	g_resy = 0;
@@ -38,10 +38,10 @@ static void		will_put(t_map *map, t_map *piece)
 	free(x);
 }
 
-int			main(void)
+int				main(void)
 {
-	t_map	*map;
-	t_map	*piece;
+	t_map		*map;
+	t_map		*piece;
 
 	parse_player();
 	while (1)

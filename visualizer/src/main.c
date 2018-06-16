@@ -1,33 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzabrots <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/16 13:15:48 by dzabrots          #+#    #+#             */
+/*   Updated: 2018/06/16 13:16:00 by dzabrots         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../visualizer.h"
+
 static void	winner_o(void)
 {
-		ft_putstr_fd(RED, 2);
-		ft_putendl_fd(g_scoreo + 2, 2);
-		ft_putstr_fd(RESET, 2);
-		ft_putstr_fd(GREEN, 2);
-		ft_putendl_fd(g_scorex + 2, 2);
-		ft_putstr_fd(RESET, 2);
+	ft_putstr_fd(RED, 2);
+	ft_putendl_fd(g_scoreo + 2, 2);
+	ft_putstr_fd(RESET, 2);
+	ft_putstr_fd(GREEN, 2);
+	ft_putendl_fd(g_scorex + 2, 2);
+	ft_putstr_fd(RESET, 2);
 }
 
 static void	winner_x(void)
 {
-		ft_putstr_fd(GREEN, 2);
-		ft_putendl_fd(g_scoreo + 2, 2);
-		ft_putstr_fd(RESET, 2);
-		ft_putstr_fd(RED, 2);
-		ft_putendl_fd(g_scorex + 2, 2);
-		ft_putstr_fd(RESET, 2);
+	ft_putstr_fd(GREEN, 2);
+	ft_putendl_fd(g_scoreo + 2, 2);
+	ft_putstr_fd(RESET, 2);
+	ft_putstr_fd(RED, 2);
+	ft_putendl_fd(g_scorex + 2, 2);
+	ft_putstr_fd(RESET, 2);
 }
 
 static void	winners_xy(void)
 {
-		ft_putstr_fd(CYAN, 2);
-		ft_putendl_fd(g_scoreo + 2, 2);
-		ft_putendl_fd(g_scorex + 2, 2);
-		ft_putstr_fd(RESET, 2);
+	ft_putstr_fd(CYAN, 2);
+	ft_putendl_fd(g_scoreo + 2, 2);
+	ft_putendl_fd(g_scorex + 2, 2);
+	ft_putstr_fd(RESET, 2);
 }
 
-int		main(void)
+int			main(void)
 {
 	t_map	*map;
 

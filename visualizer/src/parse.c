@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dzabrots <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 17:18:06 by dzabrots          #+#    #+#             */
-/*   Updated: 2018/06/14 17:18:11 by dzabrots         ###   ########.fr       */
+/*   Created: 2018/06/16 13:16:13 by dzabrots          #+#    #+#             */
+/*   Updated: 2018/06/16 13:16:16 by dzabrots         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../visualizer.h"
 
-static int			parse_xy(char *s, char coord)
+static int				parse_xy(char *s, char coord)
 {
-	char			**arr;
-	int				res;
+	char				**arr;
+	int					res;
 
 	res = -1;
 	arr = ft_strsplit(s, ' ');
@@ -27,11 +27,11 @@ static int			parse_xy(char *s, char coord)
 	return (res);
 }
 
-static void			parse_board(int i, int x)
+static void				parse_board(int i, int x)
 {
-	char			*s;
-	int				len;
-	int				j;
+	char				*s;
+	int					len;
+	int					j;
 
 	len = i;
 	j = 0;
@@ -64,10 +64,10 @@ static void				parse_part_one(char *s, t_map *map)
 	parse_board(map->y + 1, map->x);
 }
 
-t_map				*parse_map(void)
+t_map					*parse_map(void)
 {
-	char			*s;
-	t_map			*map;
+	char				*s;
+	t_map				*map;
 
 	map = create_map();
 	if (get_next_line(0, &s))
@@ -75,7 +75,7 @@ t_map				*parse_map(void)
 		if (ft_strstr(s, "Plateau"))
 			parse_part_one(s, map);
 		else if ((ft_strstr(s, "== O fin:")))
-		{	
+		{
 			g_scoreo = ft_strdup(s);
 			free(s);
 		}
@@ -85,7 +85,7 @@ t_map				*parse_map(void)
 			free(s);
 		}
 		else
-			free (s);
+			free(s);
 	}
 	return (map);
 }

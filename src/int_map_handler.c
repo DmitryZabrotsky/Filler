@@ -12,10 +12,10 @@
 
 #include "../filler.h"
 
-static int				set_num(int y, int x, t_int_map *int_map)
+static int			set_num(int y, int x, t_int_map *int_map)
 {
-	int			i;
-	int			j;
+	int				i;
+	int				j;
 
 	i = y == 0 ? 0 : y - 1;
 	while (i > -1 && i < int_map->y && i <= y + 1)
@@ -34,8 +34,8 @@ static int				set_num(int y, int x, t_int_map *int_map)
 
 static void			handle_int_map(t_int_map *int_map)
 {
-	int			i;
-	int			j;
+	int				i;
+	int				j;
 
 	while (if_still_zero(int_map->y, int_map->x, int_map->int_arr))
 	{
@@ -72,9 +72,9 @@ static void			choose_coord(int y, int x, int value)
 static void			find_lightest_coord(int y, int x, t_map *piece,
 				t_int_map *int_map)
 {
-	int			i;
-	int			j;
-	int			current_value;
+	int				i;
+	int				j;
+	int				current_value;
 
 	current_value = 0;
 	i = 0;
@@ -94,9 +94,9 @@ static void			find_lightest_coord(int y, int x, t_map *piece,
 	choose_coord(y, x, current_value);
 }
 
-void			handle_coords(int y, int x, t_map *piece, t_map *map)
+void				handle_coords(int y, int x, t_map *piece, t_map *map)
 {
-	t_int_map	*int_map;
+	t_int_map		*int_map;
 
 	int_map = create_int_map(map->y, map->x);
 	fill_int_map(map->y, map->x, map, int_map);

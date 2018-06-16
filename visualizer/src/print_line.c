@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_line.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzabrots <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/16 13:16:24 by dzabrots          #+#    #+#             */
+/*   Updated: 2018/06/16 13:16:25 by dzabrots         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../visualizer.h"
 
-static void	print_cols(char *s)
+static void		print_cols(char *s)
 {
-		ft_putstr_fd(WHITE, 2);
-		ft_putendl_fd(s, 2);
-		ft_putstr_fd(RESET, 2);
+	ft_putstr_fd(WHITE, 2);
+	ft_putendl_fd(s, 2);
+	ft_putstr_fd(RESET, 2);
 }
 
-static void	print_rows(char *s)
+static void		print_rows(char *s)
 {
-	int i;
-	
+	int			i;
+
 	i = 0;
 	while (i <= 3)
 	{
@@ -21,10 +33,10 @@ static void	print_rows(char *s)
 	}
 }
 
-static void	print_chars(char *s, int x)
+static void		print_chars(char *s, int x)
 {
-	int i;
-	
+	int			i;
+
 	i = 3;
 	while (i < x + 4)
 	{
@@ -50,11 +62,11 @@ static void	print_chars(char *s, int x)
 	}
 }
 
-void				print_line(char *s, int x)
+void			print_line(char *s, int x)
 {
-	int i;
-	i = 0;
+	int			i;
 
+	i = 0;
 	if (ft_strstr(s, "0123456789"))
 		print_cols(s);
 	else if (s[3] == ' ')

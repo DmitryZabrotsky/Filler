@@ -1,4 +1,4 @@
-NAME = visualizer_exe
+NAME = visual
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
 INCL = visualizer.h
